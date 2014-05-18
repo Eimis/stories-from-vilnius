@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <title>title</title>
+<head>
+  <meta charset="utf-8">
+  <title>Stories from Vilnius</title>
 
-    <!-- Bootstrap-->
-    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-    <!-- Bootstrap-->
+  <!-- Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic,700bold' rel='stylesheet' content-type='text/css'>
+  <!-- / Fonts-->
+
+  <!-- Bootstrap-->
+  <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+  <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+  <!-- / Bootstrap-->
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnzX__Jxf-0pUQRDvAVH4rTuLMXbGMY6k&sensor=false"></script>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <script type="text/javascript">
+  function initialize() {
+    var mapOptions = {
+      center: new google.maps.LatLng(54.690503, 25.27787),
+      zoom: 13
+    };
+    var map = new google.maps.Map(document.getElementById("map"),
+      mapOptions);
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+
+  <link href="{{ STATIC_URL }}landing.css" rel="stylesheet" content-type='text/css'>
 
 
-  </head>
+</head>
 
-  <body>
-    <!-- page content -->
-  </body>
+<body>
+  <div class="wrap">
+
+    <div class = "mainImg">
+      <div class="slogan">
+        <p>Do you think that a particular place can be inspiring ?</p>
+      </div>
+
+    </div>
+
+    <div id="map">
+      <!-- Google map -->
+    </div>
+
+    <div class="descriptionWrap">
+
+    <div class="description">
+      <p>There are people who do:</p>
+      <div class="people">
+        <img src="/static/images/as.png" alt="img" class="img-circle person">
+      </div>
+      <br>
+      <br>
+      <p>Stories from Vilnius is a platform for sharing inspiring stories</p>
+    </div>
+  </div>
+
+  </div> <!-- / wrap -->
+</body>
 
 </html>
+
