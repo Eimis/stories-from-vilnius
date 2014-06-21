@@ -1,0 +1,21 @@
+{% extends 'test.html' %}
+
+
+{% block slogan %}
+Restricted page
+{% endblock %}
+
+{% block facebook_login %}
+{% endblock %}
+
+{% block content %}
+<p>Some restricted content</p>
+Vardas: {{ user.first_name }}<br>
+Pavarde: {{ user.last_name }}<br>
+Foto:
+<img src="http://graph.facebook.com/{{ user.facebook_id }}/picture?type=small"></img><br>
+<a href="/logout/">logout</a>
+
+{% endblock %}
+
+
