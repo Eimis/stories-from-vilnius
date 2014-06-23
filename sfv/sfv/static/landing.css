@@ -110,3 +110,17 @@ body, html{
 .content p{
 	margin-top: 0;
 }
+
+.StoryForm{
+	text-align: left;
+	width: 60%;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	padding: 1em;
+}
+
+hr{
+	border-top: 1px solid #000;
+	margin: 0 auto;
+	width: 60%;
+}

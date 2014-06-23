@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Stories from Vilnius</title>
+
+  <!-- Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic,700bold' rel='stylesheet' content-type='text/css'>
+  <!-- / Fonts-->
+
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  
+
+  <!-- Bootstrap-->
+  <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+  <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+  <!-- / Bootstrap-->
+
+
+  <link href="{{ STATIC_URL }}landing.css" rel="stylesheet" content-type='text/css'>
+
+
+
+  {% include 'django_facebook/_facebook_js.html' %}
+
+
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="descriptionWrap">
+
+      <div class="description">
+        <p>Stories from Vilnius is a platform for sharing inspiring stories</p>
+        <br>
+        <br>
+
+
+        <div class="cir">
+          <span>
+            {% block slogan %}
+            Login page
+            {% endblock %}
+          </span>
+        </div>
+
+        <br>
+        <br>
+
+        {% block facebook_login %}
+
+        <form action="{% url 'facebook_connect' %}?facebook_login=1" method="post">
+          <input type="hidden" value="{{ request.path }}stories" name="next" />
+          <input type="hidden" value="{{ request.path }}stories" name="register_next" />
+          <input type="hidden" value="{{ request.path }}" name="error_next" />
+          {% csrf_token %}
+          <input onclick="F.connect(this.parentNode); return false;" type="image" src="{{ STATIC_URL }}django_facebook/images/facebook_login.png" />
+        </form>
+
+        {% endblock %}
+
+
+
+        <div class="content">
+          {% block content %}
+          {% endblock %}
+        </div>
+
+      </div>
+    </div>
+
+  </div> <!-- / wrap -->
+</body>
+
+</html>

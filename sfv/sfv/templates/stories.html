@@ -1,0 +1,41 @@
+{% extends 'login.html' %}
+
+
+{% block slogan %}
+Stories from Vilnius
+{% endblock %}
+
+{% block facebook_login %}
+{% endblock %}
+
+{% block content %}
+<p>Google Map (all stories)</p>
+Vardas: {{ user.first_name }}<br>
+Pavarde: {{ user.last_name }}<br>
+Foto:
+<img src="http://graph.facebook.com/{{ user.facebook_id }}/picture?type=small"></img><br><br>
+
+
+
+
+
+
+
+
+<br>
+
+<hr>
+
+<br>
+{% if story %}
+Title: {{ story.title }} <br>
+Contents: {{ story.title }} <br>
+Picture: <img src="{{MEDIA_URL}}{{ story.picture }}"></img> <br>
+{% endif %}
+
+<br><br>
+<a href="/logout/">logout</a>
+
+{% endblock %}
+
+

@@ -15,9 +15,11 @@ SITE_ID = 1 # fir Sites framework to work..
 # Facebook API settings
 FACEBOOK_APP_ID = '1502872819925967'
 FACEBOOK_APP_SECRET = 'bc817aa931b8a27eeed53a0d1acb4767'
+FACEBOOK_STORE_LIKES = False
+FACEBOOK_STORE_FRIENDS = False
+
 AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
-FACEBOOK_STORE_LIKES = True
-FACEBOOK_STORE_FRIENDS = True
+
 
 
 
@@ -82,10 +84,10 @@ WSGI_APPLICATION = 'sfv.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sfv_db',
-        'USER': 'eimantas',
-        'PASSWORD': 'maxmaxkit',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'sfv.db',
+        'USER': '',
+        'PASSWORD': '',
         'PORT': '',
     }
 }
