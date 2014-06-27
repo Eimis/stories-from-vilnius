@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'sfv',
     'django_facebook',
+    'location_field',
 )
 
 MIDDLEWARE_CLASSES = (

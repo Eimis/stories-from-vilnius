@@ -18,6 +18,8 @@ from sfv import settings
 from django_facebook.models import FacebookCustomUser
 #from django.views.decorators.csrf import csrf_protect
 
+from location_field.forms import PlainLocationField
+
 
 def landing(request):
 	return render(request, "landing.html", {})
@@ -36,27 +38,32 @@ def Stories(request):
     A view which displays a map with ALL users Stories.
     Some recent stories will be displayed under the map.
     '''
-    return render(request, "stories.html", {})
+    form  = StoryForm(request, request.POST, request.FILES)
+    return render(request, "stories.html", {'form' : form,})
 
 
 @login_required(redirect_field_name=None)
 def User_stories(request, username):
     '''
     A view to list stories submitted by particular User (username extracted from URL).
-    If this User is currently logged in, he will be able to add his own Story.
     '''
     try: # query all users
         FacebookCustomUser.objects.get(username = username)
     except FacebookCustomUser.DoesNotExist:
         return HttpResponseRedirect('/')
-    return render(request, "user_stories.html", {})
+    return render(request, "user_stories.html", {}) 
 
 @login_required(redirect_field_name=None)
-def User_story(request, slug):
+def User_story(request, username, slug):
     '''
     A view which displays particular User's story ('name/slug')
     '''
-    return render(request, "user_story.html", {})
+    
+    user = FacebookCustomUser.objects.get(username = username)
+    story = Story.objects.get(user = user, slug = slug)
+    share_link = request.get_full_path()
+    form = StoryForm(request, instance = story)
+    return render(request, "user_story.html", {'story' : story, 'share_link' : share_link, 'form' : form})
 
 
 @login_required(redirect_field_name=None)
@@ -73,13 +80,15 @@ def New_story(request):
             form.save()
             #graph.set('me/feed', message='Helo')
             return HttpResponseRedirect(request.path)
-        return render(request, "restricted.html", {'form' : form})
+        else:
+            form = StoryForm(request, request.POST, request.FILES)
+        return render(request, "new_story.html", {'form' : form})
     else:
         form = StoryForm(request) # request.get
         try:
             story = Story.objects.all().filter(user = user).order_by('-date')[0] #lastest
             return render(request, "new_story.html", {'form' : form, 'story' : story})
-        except IndexError:
+        except IndexError: # no Stories submitted yet
             pass
     return render(request, "new_story.html", {'form' : form,})
 
@@ -94,4 +103,10 @@ def logout(request):
 def redirect_to_login(request):
 	return HttpResponseRedirect('/')
 
+@login_required(redirect_field_name=None)
+def redirect_to_stories(request, slug):
+    return HttpResponseRedirect('/stories/')
+
 #TODO: User vs current_user (User_stories)
+# username = slugintas fb vardas pavarde
+# landing page = img

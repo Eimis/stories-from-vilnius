@@ -9,6 +9,11 @@ Stories from Vilnius
 {% endblock %}
 
 {% block content %}
+
+<div class="mapAllStories">
+	<!-- div which allows map with all stories -->
+</div>
+
 <p>Google Map (all stories)</p>
 Vardas: {{ user.first_name }}<br>
 Pavarde: {{ user.last_name }}<br>
@@ -25,6 +30,23 @@ Foto:
 <br>
 
 <hr>
+
+<!--
+<form enctype="multipart/form-data" method = 'POST' action = '/story/' class="StoryForm">
+	{% csrf_token %}
+	
+	{% for field in form %}
+	{{ field.label }}:<br>
+	<span style = "color:red">{{ field.errors|striptags }}</span><br>
+	<div>{{ field }}</div><br><br>
+	{% endfor %}
+	
+
+
+
+</form>
+
+-->
 
 <br>
 {% if story %}

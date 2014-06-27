@@ -28,10 +28,26 @@ Foto:
 
 <br>
 {% if story %}
+
 Title: {{ story.title }} <br>
 Contents: {{ story.title }} <br>
-Picture: <img src="{{MEDIA_URL}}{{ story.picture }}"></img> <br>
+Picture: <img src="{{MEDIA_URL}}{{ story.picture }}"></img> <br><br>
+Location: 
+
+<form>
+
+<div>{{ form.location }}</div><br>
+
+</form>
+<br><br>
+
 {% endif %}
+
+{% block fb_share %}
+
+<div class="fb-share-button" data-href="http://protected-badlands-9627.herokuapp.com/blog/very1stentry/" data-width="300" data-type="button"></div>
+
+{% endblock %}
 
 <br><br>
 <a href="/logout/">logout</a>

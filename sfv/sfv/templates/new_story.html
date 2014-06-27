@@ -9,6 +9,11 @@ Stories from Vilnius
 {% endblock %}
 
 {% block content %}
+
+<div class="mapEdit">
+	<!-- div which allows map editing -->
+</div>
+
 <p>New Story</p>
 Username: {{ user.username }}<br>
 Vardas: {{ user.first_name }}<br>
@@ -20,18 +25,19 @@ Foto:
 
 
 
-<form enctype="multipart/form-data" method = 'POST' action = '/test/restricted/' class="StoryForm">
+<form enctype="multipart/form-data" method = 'POST' action = '/story/' class="StoryForm">
 	{% csrf_token %}
 	
 	{% for field in form %}
 	{{ field.label }}:<br>
 	<span style = "color:red">{{ field.errors|striptags }}</span><br>
-	{{ field }}<br><br>
+	<div>{{ field }}</div><br><br>
 	{% endfor %}
 	
 
 
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" class="submitStory">
+	<div class="locationError"></div>
 </form>
 
 
@@ -40,11 +46,7 @@ Foto:
 <hr>
 
 <br>
-{% if story %}
-Title: {{ story.title }} <br>
-Contents: {{ story.title }} <br>
-Picture: <img src="{{MEDIA_URL}}{{ story.picture }}"></img> <br>
-{% endif %}
+
 
 <br><br>
 <a href="/logout/">logout</a>

@@ -12,12 +12,18 @@ class StoryForm(forms.ModelForm):
     '''
     class Meta:
         model = Story
-        fields = ('title', 'content', 'picture')
+        fields = ('title', 'content', 'picture' ,'location')
+
+
 
     def __init__(self, request, *args, **kwargs):
+       super(StoryForm, self).__init__(*args, **kwargs)
        self.request = request
        self.user = request.user
-       super(StoryForm, self).__init__(*args, **kwargs)
+       self.fields['title'].widget.attrs['class'] = 'title'
+       self.fields['content'].widget.attrs['class'] = 'content'
+       self.fields['picture'].widget.attrs['class'] = 'picture'
+       self.fields['location'].widget.attrs['class'] = 'coords'
 
 
     def clean(self):

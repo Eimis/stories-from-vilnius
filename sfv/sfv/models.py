@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from sfv import settings
 from django.template.defaultfilters import slugify
+from location_field.models import PlainLocationField
 
 
 def file(self, filename): # nice difrectory structure for images
@@ -15,11 +16,17 @@ class Story(models.Model):
     content = models.TextField()
     picture = models.ImageField(upload_to = file)
     date = models.DateTimeField(auto_now_add=True)
+    #location:
+    city = models.CharField(max_length=255)
+    location = PlainLocationField(based_fields=[city], zoom=12)
 
     def __unicode__(self):
         return self.title
 
-    def save(self, *args, **kwargs): # create slug automatically
+    def save(self, *args, **kwargs): # create url slug automatically
         self.slug = slugify(self.title)
         super(Story, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name_plural = ('Stories')
 	
