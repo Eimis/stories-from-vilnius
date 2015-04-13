@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'sfv',
     'django_facebook',
     'location_field',
+    'debug_toolbar'
 )
 
 MIDDLEWARE_CLASSES = (
