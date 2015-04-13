@@ -12,7 +12,7 @@ class StoryForm(forms.ModelForm):
     '''
     class Meta:
         model = Story
-        fields = ('title', 'content', 'picture' ,'location')
+        fields = ('title', 'content', 'picture' , 'city', 'location')
 
 
 

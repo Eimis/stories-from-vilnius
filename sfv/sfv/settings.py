@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-SITE_ID = 1 # fir Sites framework to work..
+SITE_ID = 1  # for Sites framework to work..
 
 # Facebook API settings
 FACEBOOK_APP_ID = '1502872819925967'
@@ -132,6 +132,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    'django.core.context_processors.request',
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
