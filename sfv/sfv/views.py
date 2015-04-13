@@ -35,11 +35,9 @@ def User_stories(request, username):
     A view to list stories submitted by particular User (username extracted
     from URL).
     '''
-    try:  # query all users
-        FacebookCustomUser.objects.get(username=username)
-    except FacebookCustomUser.DoesNotExist:
-        return HttpResponseRedirect('/')
-    return render(request, "user_stories.html", {})
+    user = FacebookCustomUser.objects.get(username=username)
+    user_stories = Story.objects.filter(user=user)
+    return render(request, "user_stories.html", {'user_stories': user_stories})
 
 
 @login_required(redirect_field_name=None)

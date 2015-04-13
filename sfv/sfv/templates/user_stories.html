@@ -15,22 +15,17 @@ Pavarde: {{ user.last_name }}<br>
 Foto:
 <img src="http://graph.facebook.com/{{ user.facebook_id }}/picture?type=small"></img><br><br>
 
-
-
-
-
-
-
-
 <br>
 
 <hr>
 
 <br>
-{% if story %}
-Title: {{ story.title }} <br>
-Contents: {{ story.title }} <br>
-Picture: <img src="{{MEDIA_URL}}{{ story.picture }}"></img> <br>
+{% if user_stories %}
+  {% for story in user_stories %}
+    Title: {{ story.title }} <br>
+    Contents: {{ story.title }} <br>
+    Picture: <img src="{{MEDIA_URL}}{{ story.picture }}"></img> <br>
+  {% endfor %}
 {% endif %}
 
 <br><br>
