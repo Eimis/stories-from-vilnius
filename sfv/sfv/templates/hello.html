@@ -41,9 +41,9 @@
       <ul class="actions">
         <li>
           <form action="{% url 'facebook_connect' %}?facebook_login=1" method="post">
-            <input type="hidden" value="{% url 'stories' %}" name="next" />
-            <input type="hidden" value="{% url 'stories' %}" name="register_next" />
-            <input type="hidden" value="{% url 'stories' %}" name="error_next" />
+            <!--<input type="hidden" value="{% url 'stories' %}" name="next" />-->
+            <!--<input type="hidden" value="{% url 'stories' %}" name="register_next" />-->
+            <!--<input type="hidden" value="{% url 'stories' %}" name="error_next" />-->
             {% csrf_token %}
             <button onclick="F.connect(this.parentNode); return false;" href="#" class="button special big" type="submit">
               Get Started
