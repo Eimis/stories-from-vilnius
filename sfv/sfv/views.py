@@ -1,20 +1,17 @@
 
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+
 from sfv.forms import StoryForm
 from sfv.models import Story
 
 from django_facebook.models import FacebookCustomUser
 
 
-def landing(request):
-    return render(request, "landing.html", {})
-
-
-def Login(request):
-    return render(request, "login.html", {})
+def hello(request):
+    return render(request, "hello.html", {})
 
 
 @login_required(redirect_field_name=None)

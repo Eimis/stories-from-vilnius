@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.conf.urls.static import static
-from sfv.views import landing
-from sfv.views import Login
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import RedirectView
+
+from sfv.views import hello
 from sfv.views import logout
 from sfv.views import redirect_to_login
 from sfv.views import redirect_to_stories
@@ -16,8 +18,8 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    url(r'^landing/?$', landing),
-    url(r'^$', Login),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('hello'))),
+    url(r'^hello/$', hello, name='hello'),
     url(r'^accounts/login/?$', redirect_to_login),
     url(r'^stories/?$', Stories, name='stories'),
     url(r'^logout/?$', logout),
