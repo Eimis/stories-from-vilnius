@@ -17,7 +17,7 @@ def hello(request):
 @login_required(redirect_field_name=None)
 # @facebook_required(scope='publish_stream')
 # @csrf_protect
-def Stories(request):
+def stories(request):
     '''
     A view which displays a map with ALL users Stories.
     Some recent stories will be displayed under the map.
@@ -88,8 +88,8 @@ def New_story(request):
     return render(request, "new_story.html", {'form': form})
 
 
-def logout(request):
-    auth.logout(request)
+def user_logout(request):
+    logout(request)
     return HttpResponseRedirect('/')
 
 

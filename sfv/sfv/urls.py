@@ -5,10 +5,10 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
 
 from sfv.views import hello
-from sfv.views import logout
+from sfv.views import user_logout
 from sfv.views import redirect_to_login
 from sfv.views import redirect_to_stories
-from sfv.views import Stories
+from sfv.views import stories
 from sfv.views import User_stories
 from sfv.views import User_story
 from sfv.views import New_story
@@ -19,10 +19,10 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^$', RedirectView.as_view(url=reverse_lazy('hello'))),
-    url(r'^hello/$', hello, name='hello'),
+    url(r'^hello/?$', hello, name='hello'),
     url(r'^accounts/login/?$', redirect_to_login),
-    url(r'^stories/?$', Stories, name='stories'),
-    url(r'^logout/?$', logout),
+    url(r'^stories/?$', stories, name='stories'),
+    url(r'^logout/?$', user_logout, name='user_logout'),
     url(r'^story/?$', New_story),
     url(r'^story/(?P<slug>[-\w]+)/?$', redirect_to_stories),
     url(r'^(?P<username>[-\w]+)/?$', User_stories),
