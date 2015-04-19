@@ -10,7 +10,7 @@ def file(self, filename):  # nice difrectory structure for images
 
 
 class Story(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=200)
     slug = models.SlugField()
     content = models.TextField()

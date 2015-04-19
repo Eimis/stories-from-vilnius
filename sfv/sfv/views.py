@@ -1,17 +1,20 @@
 
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from sfv.forms import StoryForm
 from sfv.models import Story
 
-from django_facebook.models import FacebookCustomUser
-
 
 def hello(request):
     return render(request, "hello.html", {})
+
+def login(request):
+    user = request.user
+    return render(request, "login.html", {'user': user})
 
 
 @login_required(redirect_field_name=None)
@@ -32,7 +35,7 @@ def User_stories(request, username):
     A view to list stories submitted by particular User (username extracted
     from URL).
     '''
-    user = FacebookCustomUser.objects.get(username=username)
+    # user = FacebookCustomUser.objects.get(username=username)
     user_stories = Story.objects.filter(user=user)
     return render(request, "user_stories.html", {'user_stories': user_stories})
 
@@ -43,7 +46,7 @@ def User_story(request, username, slug):
     A view which displays particular User's story ('name/slug')
     '''
 
-    user = FacebookCustomUser.objects.get(username=username)
+    # user = FacebookCustomUser.objects.get(username=username)
     story = Story.objects.get(user=user, slug=slug)
     share_link = request.get_full_path()
     form = StoryForm(request, instance=story)
@@ -90,10 +93,6 @@ def New_story(request):
 
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect('/')
-
-
-def redirect_to_login(request):
     return HttpResponseRedirect('/')
 
 
