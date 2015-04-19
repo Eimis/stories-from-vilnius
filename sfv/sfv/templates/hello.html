@@ -5,36 +5,27 @@
 <title>Stories from Vilnius</title>
 {% endblock %}
 
+{% block page_title %}
+<h2>Stories from Vilnius</h2>
+{% endblock %}
+
+{% block page_description %}
+<p>Stories from inspiring places</p>
+{% endblock %}
+
 {% block content %}
-  <!-- Main -->
-  <section id="main" class="wrapper">
-    <div class="container">
-
-      <header class="major special">
-        {% block page_title %}
-        <h2>Stories from Vilnius</h2>
-        {% endblock %}
-
-        {% block page_description %}
-        <p>Stories from inspiring places</p>
-        {% endblock %}
-      </header>
-
-      <div class="row 150%">
-        <div class="6u 12u$(xsmall)">
-          <div class="image fit captioned">
-            <img src="{% static 'images/pic02.jpg' %}" alt="" />
-            <h3>Lorem ipsum dolor sit amet.</h3>
-          </div>
-        </div>
-        <div class="6u$ 12u$(xsmall)">
-          <div class="image fit captioned">
-            <img src="{% static 'images/pic03.jpg' %}" alt="" />
-            <h3>Illum, maiores tempora cupid?</h3>
-          </div>
-        </div>
-      </div>
-
+<div class="row 150%">
+  <div class="6u 12u$(xsmall)">
+    <div class="image fit captioned">
+      <img src="{% static 'images/pic02.jpg' %}" alt="" />
+      <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
-  </section>
+  </div>
+  <div class="6u$ 12u$(xsmall)">
+    <div class="image fit captioned">
+      <img src="{% static 'images/pic03.jpg' %}" alt="" />
+      <h3>Illum, maiores tempora cupid?</h3>
+    </div>
+  </div>
+</div>
 {% endblock %}

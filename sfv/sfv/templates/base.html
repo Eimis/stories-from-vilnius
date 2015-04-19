@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load trans from i18n %}
+{% load socialaccount %}
 <!DOCTYPE HTML>
 <!--
 	Spatial by TEMPLATED
@@ -22,6 +23,7 @@
   <script src="{% static 'js/skel.min.js' %}"></script>
   <script src="{% static 'js/skel-layers.min.js' %}"></script>
   <script src="{% static 'js/init.js' %}"></script>
+  {% providers_media_js %}
   {% endblock %}
 
   {% block css %}
@@ -45,15 +47,30 @@
         </li>
         <li><a href="generic.html">{% trans 'About' %}</a>
         </li>
-        <li><a href="elements.html">{% trans 'Sign in / Sign up' %}</a>
+        <li><a href="{% url 'login' %}">{% trans 'Sign in / Sign up' %}</a>
         </li>
       </ul>
     </nav>
     {% endblock %}
   </header>
 
-  {% block content  %}
-  {% endblock %}
+  <!-- Main -->
+  <section id="main" class="wrapper">
+    <div class="container">
+
+      <header class="major special">
+        {% block page_title %}
+        {% endblock %}
+
+        {% block page_description %}
+        {% endblock %}
+      </header>
+
+      {% block content %}
+      {% endblock %}
+
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer id="footer">

@@ -1179,3 +1179,10 @@
 					margin-left: 0;
 					padding-left: 0;
 				}
+
+
+/*Custom styles:*/
+
+div.login {
+  text-align: center;
+}
