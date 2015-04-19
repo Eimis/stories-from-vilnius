@@ -539,6 +539,10 @@
 				width: 100%;
 			}
 
+			div.image.fit.captioned h3 {
+				text-align: center;
+			}
+
 		.image.rounded {
 			border-radius: 100%;
 		}
