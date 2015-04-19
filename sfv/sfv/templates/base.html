@@ -1,0 +1,84 @@
+{% load staticfiles %}
+{% load trans from i18n %}
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<!--http://www.cleancss.com/html-beautify/-->
+<html>
+
+<head>
+  {% block title %}
+  <title>All Stories — Stories from Vilnius</title>
+  {% endblock %}
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  {% block js %}
+  <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/skel.min.js' %}"></script>
+  <script src="{% static 'js/skel-layers.min.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+  {% endblock %}
+
+  {% block css %}
+  <noscript>
+    <link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+  </noscript>
+  {% endblock %}
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header id="header">
+    <h1><a href="index.html">Stories</a></strong> from <strong>Vilnius</strong></h1>
+    {% block nav %}
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">{% trans 'Home' %}</a>
+        </li>
+        <li><a href="generic.html">{% trans 'About' %}</a>
+        </li>
+        <li><a href="elements.html">{% trans 'Sign in / Sign up' %}</a>
+        </li>
+      </ul>
+    </nav>
+    {% endblock %}
+  </header>
+
+  {% block content  %}
+  {% endblock %}
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <ul class="icons">
+        <li>
+          <a href="#" class="icon fa-facebook"></a>
+        </li>
+        <li>
+          <a href="#" class="icon fa-twitter"></a>
+        </li>
+        <li>
+          <a href="#" class="icon fa-instagram"></a>
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>&copy; Untitled</li>
+        <li>Design: <a href="http://templated.co">TEMPLATED</a>
+        </li>
+        <li>Images: <a href="http://unsplash.com">Unsplash</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+
+</html>
