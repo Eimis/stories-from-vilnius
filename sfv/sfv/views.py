@@ -1,7 +1,6 @@
 
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -10,7 +9,9 @@ from sfv.models import Story
 
 
 def hello(request):
-    return render(request, "hello.html", {})
+    user = request.user
+    return render(request, "hello.html", {'user': user})
+
 
 def login(request):
     user = request.user

@@ -47,7 +47,16 @@
         </li>
         <li><a href="generic.html">{% trans 'About' %}</a>
         </li>
-        <li><a href="{% url 'login' %}">{% trans 'Sign in / Sign up' %}</a>
+        {% if user.is_authenticated %}
+        <li>
+        <a href="#"><b><span style="color: #f32853;">•</span></b> {% trans 'Profile' %}</a>
+        </li>
+        <!--<li>-->
+        <!--<img class="profile-image" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />-->
+        <!--</li>-->
+        {% endif %}
+        <li>
+        <a href="{% url 'login' %}">{% trans 'Sign in / Sign up' %}</a>
         </li>
       </ul>
     </nav>

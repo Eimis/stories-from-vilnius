@@ -1186,3 +1186,14 @@
 div.login {
   text-align: center;
 }
+
+img.profile-image {
+  width: 60px;
+  height: 60px;
+  transform: translateY(15%);
+  /*-webkit-border-radius: 30px;*/
+  /*-moz-border-radius: 30px;*/
+  /*-ms-border-radius: 30px;*/
+  /*-o-border-radius: 30px;*/
+  /*border-radius: 30px;*/
+}
